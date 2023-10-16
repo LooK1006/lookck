@@ -1,0 +1,189 @@
+# 实验一 Git和Markdown基础
+
+班级： 21计科2
+
+学号： 20210302201
+
+姓名： 李磊
+
+Github地址：<https://github.com/LooK1006/python_course>
+
+## 实验目的
+
+1. Git基础，使用Git进行版本控制
+2. Markdown基础，使用Markdown进行文档编辑
+
+## 实验环境
+
+1. Git
+2. VSCode
+3. VSCode插件
+
+### 第一部分 实验环境的安装
+
+1. 安装git，从git官网下载后直接点击可以安装：[git官网地址](https://git-scm.com/)
+2. 从Github克隆课程的仓库：[课程的Github仓库地址](https://github.com/zhoujing204/python_course)，[课程的Gitee仓库地址](https://gitee.com/zj204/python_course)，运行git bash应用（该应用包含在git安装包内），在命令行输入下面的命令（命令运行成功后，课程仓库会默认存放在Windows的用户文件夹下）
+
+```bash
+git clone https://github.com/zhoujing204/python_course.git
+```
+
+或者从gitee克隆课程的仓库：
+```bash
+git clone https://gitee.com/zj204/python_course.git
+```
+
+如果你在使用`git clone`命令时遇到SSL错误，请运行下面的git命令(这里假设你的Git使用了默认安装目录)：
+
+```bash
+git config --global http.sslCAInfo C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+```
+
+该仓库的课程材料后续会有更新，如果需要更新课程材料，可以在本地课程仓库的目录下运行下面的命令：
+
+```bash
+git pull
+```
+
+3. 注册Github账号或者Gitee仓库，创建一个新的仓库，用于存放实验报告和实验代码。
+4. 安装VScode，下载地址：[Visual Studio Code](https://code.visualstudio.com/)
+5. 安装下列VScode插件
+   - GitLens
+   - Git Graph
+   - Git History
+   - Markdown All in One
+   - Markdown Preview Enhanced
+   - Markdown PDF
+   - Auto-Open Markdown Preview
+   - Paste Image
+   - markdownlint
+
+### 第二部分 Git基础
+
+教材《Python编程从入门到实践》P440附录D：使用Git进行版本控制，按照教材的步骤，完成Git基础的学习。
+
+### 第三部分 learngitbranching.js.org
+
+访问[learngitbranching.js.org](https://learngitbranching.js.org)，如下图所示完成Main部分的Introduction Sequence和Ramping Up两个小节的学习。
+
+![Learngitbranching.js.org](/Experiments/img/2023-07-28-21-07-40.png)
+
+上面你学习到的git命令基本上可以应付百分之九十以上的日常使用，如果你想继续深入学习git，可以：
+
+- 继续学习[learngitbranching.js.org](https://learngitbranching.js.org)后面的几个小节（包括Main和Remote）
+- 在日常的开发中使用git来管理你的代码和文档，用得越多，记得越牢
+- 在git使用过程中，如果遇到任何问题，例如：错误删除了某个分支、从错误的分支拉取了内容等等，请查询[git-flight-rules](https://github.com/k88hudson/git-flight-rules)
+
+### 第四部分 Markdown基础
+
+查看[Markdown cheat-sheet](http://www.markdownguide.org/cheat-sheet)，学习Markdown的基础语法
+
+使用Markdown编辑器（例如VSco    de）编写本次实验的实验报告，包括[实验过程与结果](#实验过程与结果)、[实验考查](#实验考查)和[实验总结](#实验总结)，并将其导出为 **PDF格式** 来提交。
+
+## 实验过程与结果
+1 commit 提交 创建一个新的提交记录 
+实验1指令
+```bash
+
+git commit
+git commit
+```
+2 git branch 创建一个新的分支
+实验2指令
+
+```bash
+git branch bugFix
+git checkout bugFix
+```
+3 merge 合并两个分支
+实验3指令
+```bash
+git branch bugFix
+git checkout bugFix
+git commit
+git checkout main
+git commit
+git merge bugFix
+```
+4 git rebase合并两个分支
+实验4指令
+
+```bash
+git branch bugFix
+git checkout bugFix
+git commit
+git checkout main
+git commit
+git rebase main
+```
+5 分离head  head为头部指针
+实验5指令
+
+```bash
+git checkout c4
+```
+6相对引用 可以向上移动多个提交记录
+实验6指令
+
+```bash
+git checkout bugFix~ 
+```
+7 “~”操作符 在提交树中向上移动很多步，在该操作符后面可以跟一个数字。
+实验7指令
+```bash
+git branch -f main c6
+git branch -f bugFix bugFix~3
+git checkout HEAD~ 
+```
+8 git reset 通过把分支记录回退几个提交记录来实现撤销改动。
+实验8指令
+
+```bash
+git reset local~
+git checkout pushed
+git revert pushed
+```
+### 附录D 使用Git进行版本控制配置Git
+
+```bash
+git config --global user.name "username"
+git config --global user.email "email"
+```
+
+
+### learngitbranching.js.org练习
+
+Introduction to sequence
+1. git commit
+git commit提交了一个新的commit，这个commit包含了当前工作目录的状态。这个commit的父节点是当前分支的最新commit。
+
+
+```bash
+git commit
+git commit
+```
+
+## 实验考查
+
+请使用自己的语言回答下面的问题，这些问题将在实验检查时用于提问和答辩，并要求进行实际的操作。
+
+1. 什么是版本控制？使用Git作为版本控制软件有什么优点？
+   版本控制是一种在开发过程中用于管理对文件、目录或工程等内容的修改历史，方便查看更改历史记录，备份以便恢复以前的版本的软件工程技术。版本控制可以帮助开发者追踪和管理代码的变化，记录不同版本之间的差异，以便更好地维护和更新软件产品。
+   优点:1每个开发者都可以在本地拥有完整的代码仓库副本。
+   Git提供了强大的合并功能，可以自动合并不同分支的代码变更。即使在多人协作的项目中，也可以轻松地合并代码，避免冲突。
+   Git可以记录每次代码变更的详细信息，包括谁做了什么修改。
+2. 如何使用Git撤销还没有Commit的修改？如何使用Git检出（Checkout）已经以前的Commit？（实际操作）
+   用git checkout指令操作
+3. Git中的HEAD是什么？如何让HEAD处于detached HEAD状态？（实际操作）
+   HEAD是一个指向当前所在分支或提交的指针。用git checkout<id>指令操作
+4. 什么是分支（Branch）？如何创建分支？如何切换分支？（实际操作）
+   分支可以看作是代码库中的一个独立的副本，允许开发者在不影响主分支的情况下进行代码修改和实验性开发。用git branch指令创造分支，用git checkout <id>切换分支。
+5. 如何合并分支？git merge和git rebase的区别在哪里？（实际操作）
+   用git merge和git rebase。git merge会生成一个新的合并提交，保留了分支的历史记录，同时可以保留分支之间的并行开发历史。git rebase会将当前分支的修改移动到目标分支的最新提交之后，形成一条线性的提交历史。它可以让提交历史更加清晰简洁，但会改写提交历史，不保留分支的并行开发历史。
+6. 如何在Markdown格式的文本中使用标题、数字列表、无序列表和超链接？（实际操作）
+   使用 # 符号来表示标题的级别。使用数字和点号来表示数字列表。使用 *、- 或 + 符号来表示无序列表。使用 [链接文本](链接地址) 的格式来创建超链接。
+
+## 实验总结
+总结一下这次实验你学习和使用到的知识，例如：编程工具的使用、数据结构、程序语言的语法、算法、编程技巧、编程思想。
+在这次实验中，第一次学会了掌握git的使用，学会了一些基本操作指令git commit、git branch、git checkout、git merge等。还有撤销修改和还原历史版本的操作。在Markdown方面。也学会了Markdown的基本语法，如标题、数字列表、无序列表、超链接等；
+但是这次仍有不足，git指令容易忘，初次接触github很多东西不是很熟悉。
